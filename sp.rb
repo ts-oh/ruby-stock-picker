@@ -1,21 +1,27 @@
-# require 'pry-byebug'
+#require 'pry-byebug'
 
 stocks = [17, 3, 6, 9, 15, 8, 6, 1, 10]
 
-# stock picker method takes array of stock prices as parameter
 def stock_picker(stocks)
-  stocks.each_with_index do |_, index|
-    new_array = []
-    stocks[index..-1].each do |value|
-      new_array.push(value)
+  profit_arr = []
+  buy_sell_arr = []
+  max_profit_days = []
+
+  stocks.each_with_index do |buy, index|
+    stocks[index..-1].each do |sell|
+      buy_sell_arr.push([buy, sell])
+      profit = sell - buy
+      profit_arr.push(profit)
     end
-    p new_array
   end
 
-    # once first element is finished do same for second element for the whole array
-    # find the largest profit difference
-    # return the index number that gave largest profit difference
+  max_profit_day = profit_arr.index(profit_arr.max)
+  buy_sell_values = buy_sell_arr[max_profit_day]
+  max_buy_day = stocks.index(buy_sell_values[0])
+  max_sell_day = stocks.index(buy_sell_values[1])
+  max_profit_days.push(max_buy_day, max_sell_day)
+  max_profit_days
 end
 
-# expected => [1,4] for a profit of $15 - $3 == $12
-stock_picker([17, 3, 6, 9, 15, 8, 6, 1, 10])
+# expected => [1, 4] for a profit of $15 - $3 == $12
+p stock_picker([17, 3, 6, 9, 15, 8, 6, 1, 10])
