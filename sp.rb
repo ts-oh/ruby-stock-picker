@@ -1,6 +1,4 @@
-#require 'pry-byebug'
-
-stocks = [17, 3, 6, 9, 15, 8, 6, 1, 10]
+# Stock Picker Project
 
 def stock_picker(stocks)
   profit_arr = []
@@ -23,5 +21,10 @@ def stock_picker(stocks)
   max_profit_days
 end
 
-# expected => [1, 4] for a profit of $15 - $3 == $12
-p stock_picker([17, 3, 6, 9, 15, 8, 6, 1, 10])
+# stocks = [17, 3, 6, 9, 15, 8, 6, 1, 10]
+stocks = [0.51, 4.32, 3.6, 7.81, 1.73, 1.3, 21.11, 2.90, 45.234, 23.4, 0.1]
+
+p stock_picker(stocks)
+
+# expected => [1, 4]
+# expected => [0, 8]
